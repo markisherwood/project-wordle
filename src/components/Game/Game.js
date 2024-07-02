@@ -19,13 +19,14 @@ function Game() {
     setGuesses([...guesses, checkGuess(guess, answer)]);
   }
 
-  let gameStatus = "inProgress";
+
+  let [gameStatus, setGameStatus] = React.useState('inProgress');
   if (
     guesses.some((guess) => guess.every((char) => char.status === "correct"))
   ) {
-    gameStatus = "win";
+    setGameStatus("win");
   } else if (guesses.length >= 6) {
-    gameStatus = "loss";
+    setGameStatus("loss");
   }
 
   return (
