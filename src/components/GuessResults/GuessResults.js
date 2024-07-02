@@ -8,9 +8,12 @@ function GuessResults({ guesses }) {
       {range(NUM_OF_GUESSES_ALLOWED).map((rowIndex) => {
         return (
           <p className="guess" key={rowIndex}>
-            {range(5).map((charIndex) => (
-              <span className="cell" key={charIndex}>{guesses?.[rowIndex]?.[charIndex]}</span>
-            ))}
+            {range(5).map((charIndex) => {
+              const current = guesses?.[rowIndex]?.[charIndex];
+              return (
+              <span className={`cell ${current?.status}`} key={charIndex}>{current?.letter}</span>
+              )
+            })}
           </p>
         );
       })}
