@@ -1,7 +1,8 @@
 import React from "react";
 
-function GuessInput({ makeGuess }) {
+function GuessInput({ makeGuess, disabled }) {
   const [currentGuess, setCurrentGuess] = React.useState("");
+
   return (
     <form
       className="guess-input-wrapper"
@@ -18,6 +19,7 @@ function GuessInput({ makeGuess }) {
         minLength="5"
         maxLength="5"
         value={currentGuess}
+        disabled={disabled}
         onChange={(event) => {
           setCurrentGuess(event.target.value.toUpperCase());
         }}
